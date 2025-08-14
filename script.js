@@ -30,7 +30,7 @@ function displayRandomQuote() {
 // onload
 getQuote();
 
-// Add event listener to the button
+// button event listner
 document.addEventListener('DOMContentLoaded', () => {
     const button = document.querySelector('.button-container');
     button.addEventListener('click', displayRandomQuote);
