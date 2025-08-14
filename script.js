@@ -1,5 +1,7 @@
+// array to hold quotes
 let data = [];
 
+// Fetch quotes from API
 async function getQuote() {
     const proxyURL = "https://api.allorigins.win/raw?url=";
     const apiURL = "https://firestore.googleapis.com/v1/projects/quote-6ab48/databases/(default)/documents/array";
@@ -14,6 +16,7 @@ async function getQuote() {
     }
 }
 
+// for displaying random quote
 function displayRandomQuote() {
     if (data.documents && data.documents.length > 0) {
         const randomIndex = Math.floor(Math.random() * data.documents.length);
