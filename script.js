@@ -1,0 +1,39 @@
+let data = [];
+
+async function getQuote() {
+    const proxyURL = "https://api.allorigins.win/raw?url=";
+    const apiURL = "https://firestore.googleapis.com/v1/projects/quote-6ab48/databases/(default)/documents/array";
+
+    try {
+        const response = await fetch(proxyURL + apiURL);
+        data = await response.json();
+        console.log(data);
+    }
+    catch(error) {
+        console.error("Error fetching quote:", error);
+    }
+}
+
+function displayRandomQuote() {
+    if (data.documents && data.documents.length > 0) {
+        const randomIndex = Math.floor(Math.random() * data.documents.length);
+        const randomQuote = data.documents[randomIndex];
+        
+        const quote = randomQuote.fields.quote.stringValue;
+        const author = randomQuote.fields.author.stringValue;
+        
+        document.getElementById('quote-author').textContent = quote;
+        document.getElementById('author-text').firstChild.textContent = author;
+    }
+}
+
+// onload
+getQuote();
+
+// Add event listener to the button
+document.addEventListener('DOMContentLoaded', () => {
+    const button = document.querySelector('.button-container');
+    button.addEventListener('click', displayRandomQuote);
+});
+
+
