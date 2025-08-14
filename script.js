@@ -22,8 +22,8 @@ function displayRandomQuote() {
         const quote = randomQuote.fields.quote.stringValue;
         const author = randomQuote.fields.author.stringValue;
         
-        document.getElementById('quote-author').textContent = quote;
-        document.getElementById('author-text').firstChild.textContent = author;
+        document.getElementById('quote-text').textContent = quote;
+        document.getElementById('author-text').textContent = author;
     }
 }
 

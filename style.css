@@ -57,14 +57,17 @@ body{
 .author-text{
     margin-top: 20px;
     text-align: center;
-    font-size: 14px;
+    font-size: 20px;
     color: #666;
+    font-style: italic;
 }
 
-.quote-author{
-    margin-top: 10px;
-    font-style: italic;
-    font-size: 12px;
-    color: #999;
+.quote-text{
+    margin-top: 30px;
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+    font-weight: 500;
+    line-height: 1.4;
 }
 
