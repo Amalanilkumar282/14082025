@@ -52,23 +52,124 @@ body{
     font-size: 14px;
     color: #999;
 }
-.button-container{
+
+.buttons-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
     margin-top: 12px;
-    padding: 5px 10px;
-    font-family: 'montserrat';
+}
+
+.button-container, .linkedin-share-btn {
+    padding: 12px 20px;
+    font-family: 'montserrat', sans-serif;
     border: none;
-    border-radius: 12px;
-    background-color: #333;
-    color: white;
+    border-radius: 25px;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: fit-content;
-    height: fit-content;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 18px;
+    gap: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.button-container {
+    background: linear-gradient(45deg, #333, #555);
+    color: white;
+    min-width: 140px;
+}
+
+.button-container:hover {
+    background: linear-gradient(45deg, #555, #777);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.linkedin-share-btn {
+    background: linear-gradient(45deg, #0077B5, #00A0DC);
+    color: white;
+    min-width: 180px;
+}
+
+.linkedin-share-btn:hover {
+    background: linear-gradient(45deg, #005885, #0077B5);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 119, 181, 0.3);
+}
+
+.linkedin-share-btn:active, .button-container:active {
+    transform: translateY(0);
+}
+
+/* Responsive design for buttons */
+@media (max-width: 768px) {
+    .buttons-wrapper {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .button-container, .linkedin-share-btn {
+        width: 100%;
+        max-width: 200px;
+        padding: 15px 20px;
+        font-size: 16px;
+    }
+}
+
+/* Loading animation for buttons */
+.button-loading {
+    position: relative;
+    pointer-events: none;
+}
+
+.button-loading::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    margin: auto;
+    border: 2px solid transparent;
+    border-top-color: #ffffff;
+    border-radius: 50%;
+    animation: button-loading-spinner 1s ease infinite;
+}
+
+@keyframes button-loading-spinner {
+    from {
+        transform: rotate(0turn);
+    }
+    to {
+        transform: rotate(1turn);
+    }
+}
+
+/* Enhanced button interactions */
+.linkedin-share-btn:focus, .button-container:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 119, 181, 0.3);
+}
+
+/* Success state for LinkedIn button */
+.linkedin-share-btn.success {
+    background: linear-gradient(45deg, #28a745, #34ce57) !important;
+    transform: scale(1.05);
+}
+
+/* Disabled state */
+.button-container:disabled, .linkedin-share-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.button-container:disabled:hover, .linkedin-share-btn:disabled:hover {
+    transform: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .author-text{
