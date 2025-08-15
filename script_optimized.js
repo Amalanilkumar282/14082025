@@ -60,8 +60,16 @@ function shareToLinkedIn() {
     if (cleanAuthor) text += ` - ${cleanAuthor}`;
     text += ' #Motivation #Inspiration #Quotes';
     
-    // Open LinkedIn with pre-filled text
-    window.open(`https://www.linkedin.com/feed/?shareActive=true&text=${encodeURIComponent(text)}`, 'linkedin-share', 'width=626,height=500');
+    // Try LinkedIn URLs until one opens
+    const urls = [
+        `https://www.linkedin.com/feed/?shareActive=true&text=${encodeURIComponent(text)}`,
+        `https://www.linkedin.com/feed/update/urn:li:share:compose/?text=${encodeURIComponent(text)}`,
+        `https://www.linkedin.com/sharing/share-offsite/?summary=${encodeURIComponent(text)}`
+    ];
+    
+    for (const url of urls) {
+        if (window.open(url, 'linkedin-share', 'width=626,height=500')) break;
+    }
 }
 
 // Initialize
